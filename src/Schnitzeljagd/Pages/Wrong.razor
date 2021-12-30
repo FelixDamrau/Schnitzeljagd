@@ -1,0 +1,16 @@
+﻿@page "/wrong"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h1" GutterBottom="true">@GetWrongText()</MudText>
+</MudContainer>
+
+@code {
+    private Random random = new();
+    private IReadOnlyList<string> wrongTexts = new[] { "Nein!", "Falsch!", "Nope", "Naha!" };
+
+    private string GetWrongText()
+    {
+        var rnd = random.Next(0, wrongTexts.Count);
+        return wrongTexts[rnd];
+    }
+}

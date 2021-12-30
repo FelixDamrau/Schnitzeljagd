@@ -1,0 +1,26 @@
+﻿@page "/birds"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Wie viele Vogelhäuser hängen am Baumstumpf?</MudText>
+    <MudRadioGroup @bind-SelectedOption="Selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">11</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">12</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">13</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">14</MudRadio>
+    </MudRadioGroup>
+
+    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Link="@GetPage()">Lösung abgeben</MudButton>
+</MudContainer>
+
+@code {
+    public int Selected { get; set; } = 1;
+
+    public string GetPage()
+    {
+        return Selected switch
+        {
+            2 => "/pastor",
+            _ => "/wrong"
+        };
+    }
+}

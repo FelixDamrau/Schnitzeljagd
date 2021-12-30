@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Schnitzeljagd", "src\Schnitzeljagd\Schnitzeljagd.csproj", "{EE71CF59-2FFC-4439-8917-D0FF7FCF77EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE0432B2-0F55-4690-9B88-C0C1A2B1AA24}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.github\workflows\dotnet-build.yml = .github\workflows\dotnet-build.yml
+		.github\workflows\dotnet-deploy.yml = .github\workflows\dotnet-deploy.yml
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE71CF59-2FFC-4439-8917-D0FF7FCF77EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE71CF59-2FFC-4439-8917-D0FF7FCF77EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE71CF59-2FFC-4439-8917-D0FF7FCF77EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE71CF59-2FFC-4439-8917-D0FF7FCF77EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E79E2F28-874C-47C6-A270-6DCD9DB4D014}
+	EndGlobalSection
+EndGlobal
