@@ -9,20 +9,13 @@
         <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">14</MudRadio>
     </MudRadioGroup>
 
-    <MudButton Disabled=@(!IsValid()) Variant="Variant.Filled" Color="Color.Secondary" Link="@GetPage()">Lösung abgeben</MudButton>
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="pastor" />
 </MudContainer>
 
 @code {
     private int selected = -1;
 
-    private string GetPage()
-    {
-        return selected switch
-        {
-            2 => "pastor",
-            _ => "wrong"
-        };
-    }
+    private bool IsCorrect() => selected == 2;
 
     private bool IsValid() => selected >= 1 && selected <= 4;
 }
