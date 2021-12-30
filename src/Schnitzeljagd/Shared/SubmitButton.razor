@@ -1,0 +1,76 @@
+﻿@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+
+<MudButton Disabled=@(!AnswerValid() || submitting) Variant="Variant.Filled" Color=@buttonColor OnClick=OnButtonClicked>@currentText</MudButton>
+
+@code {
+    private string currentText = "Abschicken";
+    private Color buttonColor;
+    private bool submitting = false;
+
+    [Parameter]
+    public string ButtonText { get; set; } = "Abschicken";
+
+    [Parameter]
+    public string NextPage { get; set; } = "birds";
+
+    [Parameter]
+    [EditorRequired]
+    public Func<bool> AnswerCorrect { get; set; } = () => true;
+
+    [Parameter]
+    [EditorRequired]
+    public Func<bool> AnswerValid { get; set; } = () => true;
+
+    private Random random = new();
+    private IReadOnlyList<string> correctTexts = new[] { "Yop", "Genau", "Korrekt", "Stimmt", "Yes" };
+    private IReadOnlyList<string> wrongTexts = new[] { "Nein!", "Falsch!", "Nope", "Naha!" };
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        InitButton();
+    }
+
+    private async Task OnButtonClicked()
+    {
+        if(AnswerCorrect())
+        {
+            buttonColor = Color.Success;
+            currentText = GetCorrectText();
+            submitting = true;
+            Snackbar.Add("Weiter geht's!", Severity.Success);
+            await Task.Delay(2000);
+            NavigationManager.NavigateTo(NextPage);
+            submitting = false;
+        }
+        else
+        {
+            buttonColor = Color.Error;
+            currentText = GetWrongText();
+            submitting = true;
+            Snackbar.Add(GetWrongText() + " - Versuche es noch einmal!", Severity.Error);
+            await Task.Delay(5000);
+            InitButton();
+            submitting = false;
+        }
+    }
+
+    private void InitButton()
+    {
+        currentText = ButtonText;
+        buttonColor = Color.Secondary;
+    }
+
+    private string GetWrongText()
+    {
+        var rnd = random.Next(0, wrongTexts.Count);
+        return wrongTexts[rnd];
+    }
+
+    private string GetCorrectText()
+    {
+        var rnd = random.Next(0, correctTexts.Count);
+        return correctTexts[rnd];
+    }
+}
