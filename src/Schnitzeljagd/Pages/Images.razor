@@ -1,28 +1,45 @@
 ﻿@page "/images"
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
-    <MudText Typo="Typo.h3" GutterBottom="true">Was war das Schild an der ersten Station?</MudText>
-    <MudRadioGroup @bind-SelectedOption="selected">
-        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large"><img src="images/3.jpg" width="280" /></MudRadio>
-        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large"><img src="images/2.jpg" height="280" /></MudRadio>
-        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large"><img src="images/1.jpg" width="280" /></MudRadio>
-        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large"><img src="images/4.jpg" width="280" /></MudRadio>
+    <MudText Typo="Typo.h3" GutterBottom="true">Auf welchen Straßeneinbau weist das gefundene Schild hin?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selectedUtilityKind">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">Gasleitung</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">Hydrant</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">Fernwärme</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">Elektrische Leitung</MudRadio>
+    </MudRadioGroup>
+
+    <MudText Typo="Typo.h3" GutterBottom="true">Wie weit ist der Straßeneinbau vom Schild entfernt?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selectedDistance">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">270m</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">27m</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">27dm</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">2,7dm</MudRadio>
     </MudRadioGroup>
 
     <MudButton Disabled=@(!IsValid()) Variant="Variant.Filled" Color="Color.Secondary" Link="@GetPage()">Lösung abgeben</MudButton>
 </MudContainer>
 
 @code {
-    private int selected = -1;
+    private int selectedUtilityKind = -1;
+    private int selectedDistance = -1;
 
     private string GetPage()
     {
-        return selected switch
+        return (selectedUtilityKind, selectedDistance) switch
         {
-            1 => "birds",
+            (2, 1) => "birds",
             _ => "wrong"
         };
     }
 
-    private bool IsValid() => selected >= 1 && selected <= 4;
+    private bool IsValid()
+    {
+        return (selectedUtilityKind, selectedDistance) switch
+        {
+            ( >= 1, >= 1) and ( <= 4, <= 4) => true,
+            _ => false
+        };
+    }
+    //=> selectedUtilityKind >= 1 && selectedUtilityKind <= 4;
 }
