@@ -1,8 +1,8 @@
 ﻿@page "/pastor"
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
-    <MudText Typo="Typo.h3" GutterBottom="true">Wie heißt der Pastor, der am ältesten wurde?</MudText>
-    <MudRadioGroup @bind-SelectedOption="Selected">
+    <MudText Typo="Typo.h3" GutterBottom="true">Welcher der Altenbekener Pfarrer wurde am ältesten?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
         <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">Pfarrer Georg Kersting</MudRadio>
         <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">Pfarrerin Katrin Elhaus</MudRadio>
         <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">Pfarrer Martin Götze</MudRadio>
@@ -10,18 +10,20 @@
         <MudRadio Option="5" Color="Color.Secondary" Size="Size.Large">Pfarrer Rainer Unglaub</MudRadio>
     </MudRadioGroup>
 
-    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Link="@GetPage()">Lösung abgeben</MudButton>
+    <MudButton Disabled=@(!IsValid()) Variant="Variant.Filled" Color="Color.Secondary" Link="@GetPage()">Lösung abgeben</MudButton>
 </MudContainer>
 
 @code {
-    public int Selected { get; set; } = 1;
+    private int selected  = -1;
 
-    public string GetPage()
+    private string GetPage()
     {
-        return Selected switch
+        return selected switch
         {
             4 => "code",
             _ => "wrong"
         };
     }
+
+    private bool IsValid() => selected >= 1 && selected <= 5;
 }
