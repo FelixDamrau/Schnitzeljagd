@@ -39,7 +39,7 @@
             buttonColor = Color.Success;
             currentText = GetCorrectText();
             submitting = true;
-            Snackbar.Add("Weiter geht's!", Severity.Success);
+            Snackbar.Add(GetCorrectText() + " - Weiter geht's!", Severity.Success);
             await Task.Delay(2000);
             NavigationManager.NavigateTo(NextPage);
             submitting = false;
