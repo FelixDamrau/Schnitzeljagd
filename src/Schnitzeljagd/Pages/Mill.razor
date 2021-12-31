@@ -1,0 +1,21 @@
+﻿@page "/mill"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Wann war am Mühlengraben eine Mühle in Betrieb?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">4. Jahrhundert vor unserer Zeitrechnung</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">16. Jahrhundert vor unserer Zeitrechnung</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">16. Jahrhundert nach unserer Zeitrechnung</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">18. Jahrhundert nach unserer Zeitrechnung</MudRadio>
+    </MudRadioGroup>
+
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="ortwald" />
+</MudContainer>
+
+@code {
+    private int selected = -1;
+
+    private bool IsCorrect() => selected == 3;
+
+    private bool IsValid() => selected >= 1 && selected <= 4;
+}

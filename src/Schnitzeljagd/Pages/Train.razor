@@ -1,0 +1,21 @@
+﻿@page "/train"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Wie viele Stufen sind es bis beim Bahnhof zum Tunnel/Durchgang zu den Zügen?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">15</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">16</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">17</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">18</MudRadio>
+    </MudRadioGroup>
+
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="spatula" />
+</MudContainer>
+
+@code {
+    private int selected = -1;
+
+    private bool IsCorrect() => selected == 1;
+
+    private bool IsValid() => selected >= 1 && selected <= 4;
+}

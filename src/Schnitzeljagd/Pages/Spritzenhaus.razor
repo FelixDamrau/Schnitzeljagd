@@ -1,0 +1,21 @@
+﻿@page "/spritzenhaus"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Wofür diente das Spritzenhaus zuerst in 1920?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">Lager für die Feuerwehr</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">Lager für das Krankenhaus</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">Wohnplatz für Landstreicher</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">Wohnung des Bürgermeisters</MudRadio>
+    </MudRadioGroup>
+
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="mill" />
+</MudContainer>
+
+@code {
+    private int selected = -1;
+
+    private bool IsCorrect() => selected == 1;
+
+    private bool IsValid() => selected >= 1 && selected <= 4;
+}
