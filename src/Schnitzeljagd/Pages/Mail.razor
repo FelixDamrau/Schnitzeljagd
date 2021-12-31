@@ -1,0 +1,21 @@
+﻿@page "/mail"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Was ist heutzutage in Gebäude der alten Post?</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">Die Post</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">Eine Arztpraxis</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">Ein Supermarkt</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">Nichts</MudRadio>
+    </MudRadioGroup>
+
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="cityhall" />
+</MudContainer>
+
+@code {
+    private int selected = -1;
+
+    private bool IsCorrect() => selected == 2;
+
+    private bool IsValid() => selected >= 1 && selected <= 4;
+}

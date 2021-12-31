@@ -1,0 +1,21 @@
+﻿@page "/ortwald"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudText Typo="Typo.h3" GutterBottom="true">Wie viele Häuser (Gebäude mit Hausnummer) stehen auf der Nordseite der Ortwaldstraße? Ab Ecke Bollaes bis Ecke Scholandweg.</MudText>
+    <MudRadioGroup @bind-SelectedOption="selected">
+        <MudRadio Option="1" Color="Color.Secondary" Size="Size.Large">6</MudRadio>
+        <MudRadio Option="2" Color="Color.Secondary" Size="Size.Large">7</MudRadio>
+        <MudRadio Option="3" Color="Color.Secondary" Size="Size.Large">9</MudRadio>
+        <MudRadio Option="4" Color="Color.Secondary" Size="Size.Large">10</MudRadio>
+    </MudRadioGroup>
+
+    <SubmitButton AnswerValid=IsValid AnswerCorrect=IsCorrect NextPage="mail" />
+</MudContainer>
+
+@code {
+    private int selected = -1;
+
+    private bool IsCorrect() => selected == 4;
+
+    private bool IsValid() => selected >= 1 && selected <= 4;
+}
