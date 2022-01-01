@@ -1,7 +1,7 @@
 ﻿@inject NavigationManager NavigationManager
 @inject ISnackbar Snackbar
 
-<MudButton Disabled=@(!AnswerValid() || submitting) Variant="Variant.Filled" Color=@buttonColor OnClick=OnButtonClicked>@currentText</MudButton>
+<MudButton Size="Size.Large" Style="margin: 1rem" Disabled=@(!AnswerValid() || submitting) Variant="Variant.Filled" Color=@buttonColor OnClick=OnButtonClicked>@currentText</MudButton>
 
 @code {
     private string currentText = "Abschicken";
