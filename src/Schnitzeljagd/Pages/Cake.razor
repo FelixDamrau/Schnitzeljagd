@@ -1,0 +1,24 @@
+﻿@page "/cake"
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="xs-16">
+    <MudGrid>
+        <MudItem Class="d-flex align-center justify-center mud-width-full py-8" xs=12>
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Primary" />
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Secondary" />
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Success" />
+        </MudItem>
+        <MudItem Class="d-flex align-center justify-center mud-width-full py-8" xs=12>
+            <MudText Typo="Typo.h2" GutterBottom="true">Alles Gute zum Geburstag!</MudText>
+        </MudItem>
+        <MudItem Class="d-flex align-center justify-center mud-width-full py-8" xs=12>
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Primary" />
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Secondary" />
+            <MudIcon Icon="@Icons.TwoTone.Cake" Size="Size.Large" Color="Color.Success" />
+        </MudItem>
+    </MudGrid>
+
+</MudContainer>
+
+@code {
+    MarkupString cake = new(@Icons.Filled.Cake);
+}
